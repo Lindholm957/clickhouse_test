@@ -1,0 +1,25 @@
+version: '3.4'
+
+services:
+  clickhouse-cdn:
+    image: yandex/clickhouse-server:latest
+    volumes:
+      - ./docker/clickhouse/config.xml:/etc/clickhouse-server/config.xml
+      - ./docker/clickhouse/user.sql:/docker-entrypoint-initdb.d/001_user.sql
+      - ./db.sql:/docker-entrypoint-initdb.d/002_db.sql
+    ports:
+      - "8123:8123"
+      - "9000:9000"
+    networks:
+      - balancer
+    env_file:
+      - ./docker/development.env
+
+volumes:
+  clickhouse_cdn:
+    driver: local
+
+networks:
+  balancer:
+    external:
+      name: balancer

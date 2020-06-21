@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<yandex>
+    <users>
+        <cdn>
+            <password>cdn</password>
+            <access_management>1</access_management>
+        </cdn>
+    </users>
+</yandex>
